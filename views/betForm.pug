@@ -1,0 +1,37 @@
+extends layout
+
+block content
+    
+    form#createGame(class="form1", action="", method="post")
+      div.form-group  
+        h2 Ingreso de Apuestas
+        label(class="form-label",for='betGamers') 
+            input#player1.form-control(
+            
+            type="text",
+            placeholder="apuesta del jugador 1",
+            name="betGamers",
+            value="",
+            required)
+
+        label(for='betGamers') 
+            input#player2(
+            class="form-control", 
+            type="text",
+            placeholder="apuesta del jugador 2", 
+            name="betGamers",
+            value="",
+            required)
+
+        label(for='betGamers') 
+            input#player3(
+            class="form-control",
+            type="text",
+            placeholder="apuesta del jugador 3", 
+            name="betGamers",value="",
+            required)
+        button#submit(
+            class="form-control btn-primary",
+            type="submit", 
+            onsubmit="getBet()") Enviar datos de apuesta
+    
