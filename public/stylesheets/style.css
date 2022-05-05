@@ -1,20 +1,33 @@
 body {
     /* color: lawngreen; */
-  padding-top: 100px;
+    padding-top: 100px;
   padding-left: 200px;
   padding-right: 200px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   text-align: center;
+  background-color: #E0DFD5;
+
+
+  
 
   
 }
+title{
+    text-align: center;
+   
+}
+img{
+    height: 20vh;
+    padding-bottom: 2vh;
+}
+
 /* h2{
     color: rgba(10, 10, 10, 0.9);
     margin:30px;
     font-weight: bold;
 } */
 label{
-   
+     
     display: grid;
     grid-row-gap: 1em;
 }

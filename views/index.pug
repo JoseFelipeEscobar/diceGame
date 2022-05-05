@@ -1,13 +1,14 @@
 extends layout
 
 block content
-    
+    div.title
+        h2 Juego de dados virtual
+        img(src="https://cdn-icons-png.flaticon.com/512/2228/2228426.png")
+
     form#createGame(class="form", action="", method="post")
       div.form-group  
-        h2 juego de dados virtual
-        label(class="form-label",for='gamers') 
+        label(class="form-label", for='gamers') 
             input#player1.form-control(
-            
             type="text",
             placeholder="Player1",
             name="gamers",

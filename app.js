@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //rutas para el juego
 app.use('/createGame', require('./routes/createGame'));
 app.use('/game',require('./routes/winner'));
-app.use('/startGame',require('./routes/startGame'))
+app.use('/startGame',require('./routes/startGame'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
