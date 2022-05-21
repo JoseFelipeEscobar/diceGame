@@ -2,9 +2,13 @@ var express = require('express');
 var router = express.Router();
 const gameController=require('../controllers/game.controller')
 
-/* ruta para comenzar el juego*/
+/**
+ *  @description POST/ para comenzar el juego
+ * */
 router.post('/',gameController.startGame);
-/* ruta para bet form page. */
+/**
+ *  @description GET/ ruta de pagina formulario para crear el juego 
+ */
 router.get('/', (req,res) => {
     res.render('betForm');
   });

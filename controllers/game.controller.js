@@ -1,8 +1,19 @@
+/**
+ * @author: Jose Felipe Escobar Ballesta - jfejose10@gmail.com
+ * @since 20/05/2022
+ * @version 1.0.0
+ */
+
+
 const Game=require('../models/createGame.model')
 const { uuid } = require('uuidv4');
 
 
-//guarda los jugadores que van a jugar
+/**
+ * @description Funcion para crear el juego con los nombres de los jugadore que apuestan
+ * @returns JSON con los nombres de los jugadores y el id  
+ */
+
 exports.createGame=function(req,res){
     try{
         const{gamers}=req.body;
@@ -20,24 +31,33 @@ exports.createGame=function(req,res){
         })
         gameModel.save()
             .then((result)=>res.json({
-                id:result.id,
+                id:result.gameid,
                 type:"",
-                gamers:[gamers[0],gamers[1],gamers[2]]
-                // [0].name,result.gamers[1].name,result.gamers[2].name,
+                gamers:[result.gamers[0].name,result.gamers[1].name,result.gamers[2].name],
+                // [gamers[0],gamers[1],gamers[2]]
             }))
-            .catch((err)=>console.log(err));
+            .catch((err) => {res.status(404).json({
+                "error": err.message,
+                "message": "Error no se pudo crear el juego intentelo mas tarde"
+              })});
+            
     }
     catch(err){
         console.log(err)
     }
 }
 
-//para ver el estado del juego
+/** 
+ * funcion para consultar el estado del juego
+ * @returns JSON con todos los parametros del juego
+ *   
+ */
 exports.gameStatus=function(req,res){
     const {gameid}=req.params;
-    Game.findOne({gameid})  
+    Game.findOne(gameid)  
         .then(result=>{ res.json({
-            id: result.id,
+            
+            id: result.gameid,
             gamers: {
                 id1: {
                     id: result.gamers[0].id,
@@ -59,9 +79,16 @@ exports.gameStatus=function(req,res){
             }
         })
         })
-        .catch(err=>console.log(err));
+        .catch((err) => {res.status(404).json({
+            "error": err.message,
+            "message": "Game not found"
+          })});
 }
 
+/**
+ * controlador para comenzar las apuestas 
+ * @returns JSON con los id de los jugadores y sus apuestas 
+ */
 exports.startGame=function(req,res){
     const {betGamers}=req.body;
     const {gameid}=req.params;
@@ -73,13 +100,20 @@ exports.startGame=function(req,res){
             obj[result.gamers[2].id]=betGamers[2];
         
             res.json({
-                id:uuid(),
+                id:result.gameid,
                 type:"" ,
-                gamerbet:obj
+                gamerbet:obj,
             })
         })
-        .catch(err=>console.log(err));
+        .catch((err) => {res.status(404).json({
+            "error": err.message,
+            "message": "Game not found"
+          })});
 }
+/**
+ * @description controlador para saber el ganador del juego
+ * @returns JSON con el id y el nombre del jugador
+ */
 exports.winner=function(req,res){
     const {gameid}=req.params;
     Game.findOne(gameid)
@@ -90,10 +124,10 @@ exports.winner=function(req,res){
                 name:result.gamers[winner].name,
             })
         })
-        .catch(err=>{
-            console.log(err)
-            console.log("no encontro el juego")
-        });
+        .catch((err) => {res.status(404).json({
+            "error": err.message,
+            "message": "Game not found"
+          })});
 }
 
 

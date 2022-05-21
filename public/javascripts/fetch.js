@@ -1,5 +1,5 @@
-const API = "http://localhost:3000/game";
-const APIBet="http://localhost:3000/startGame";
+const API = "http://localhost:8080/game";
+const APIBet="http://localhost:8080/startGame";
 const form = document.getElementsByTagName('form')[0];
 const betform = document.getElementsByTagName('form1')[0];
 
@@ -14,7 +14,7 @@ form.addEventListener('submit', async function(event){
 
 //formulario de las apuestas
 betform.addEventListener('submit',async function(event){
-    event.preventDefault();
+    e.preventDefault();
     const bet1 = document.getElementById('player1').value;
     const bet2 = document.getElementById('player2').value;
     const bet3 = document.getElementById('player3').value;
@@ -27,6 +27,7 @@ betform.addEventListener('submit',async function(event){
  * @params player1
  * @params player2
  * @params player3
+ * @returns JSon con el gameID, Nombres de los jugadores y su id  
 */
 const postData = async (player1,player2,player3)=>{
     const apiURl = `${API}`
@@ -52,12 +53,13 @@ const postData = async (player1,player2,player3)=>{
     };
 };
 
-/**funcion para ingresar los datos de las apuesta de cada jugador 
- * y traer un json de respuesta 
+/** funcion para ingresar los datos de las apuesta de cada jugador 
+ *  y traer un json de respuesta 
  * 
- * @params bet1
- * @params bet2
- * @params bet3
+ * @params bet1 apuesta del jugador 1
+ * @params bet2 apuesta del jugador 2
+ * @params bet3 apuesta del jugador 3
+ * @return Json con los datos del juego, y las apuestas ingresadas por cada jugador
 */
 
 const postBet = async (bet1,bet2,bet3)=>{
@@ -83,61 +85,3 @@ const postBet = async (bet1,bet2,bet3)=>{
         console.log('Fetch Error', error);
     };
 };
-
-
-
-// const gamestatus=async()=>{
-//     try{
-//         const respuesta =await fetch('http://localhost:3000/game');
-
-//         console.log(respuesta);
-//         const datos= await() respuesta.
-
-//     }catch{
-//         console.log(err);
-//     }
-// }
-// gamestatus();
-
-// const { v4: uuidv4 } = require('uuid');
-// uuidv4(); 
-// Daniel Granados18:55
-// npm install uuid
-// Daniel Granados19:06
-// router.get('/', (req, res, next) => {
-//   try {
-//     res.status(200).render('createGame', {});
-//   } catch (error) {
-//     next(error);
-//   }
-// });
-
-//    <button
-//                 type="submit"
-//                 class="primary-button"
-//                 onsubmit="getData(userName.value)"
-//               >
-//                 
-{/*
-
- Search
-Falto agregar en el pug
-y agregarle al form, la clase form
-Daniel Granados19:39
-https://copilot.github.com/
-Daniel Granados20:14
-https://pugjs.org/language/attributes.html
-Daniel Granados20:30
-//- index.pug
-doctype html
-html
-  head
-    style
-      include style.css
-  body
-    h1 My Site
-    p Welcome to my super lame site.
-    script
-      include script.js
-Daniel Granados20:33
- script(src='/javascripts/jquery.js') */}

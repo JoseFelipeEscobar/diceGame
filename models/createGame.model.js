@@ -3,18 +3,22 @@ const Schema=mongoose.Schema;
 const {v4: uuidv4 } = require('uuid');
 
 const gameSchema=new Schema({
-    id:{
+    gameid:{
         type:String,
+        unique:true,
         default:uuidv4(),
     },
     gamers:[{
         id:{
             type:String,
+            unique:true,
+            trim:true,
             default:uuidv4(),
         },
         name:{
             type:String,
             trim:true,
+            default:''
         }
     }],
 })

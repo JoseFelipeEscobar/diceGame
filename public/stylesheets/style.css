@@ -7,14 +7,9 @@ body {
   text-align: center;
   background-color: #E0DFD5;
 
-
-  
-
-  
 }
-title{
+.title{
     text-align: center;
-   
 }
 img{
     height: 20vh;
@@ -27,7 +22,6 @@ img{
     font-weight: bold;
 } */
 label{
-     
     display: grid;
     grid-row-gap: 1em;
 }
@@ -46,4 +40,7 @@ label{
 }
 a {
   color: #00B7FF;
+}
+.gun{
+    min-height: 300px;   
 }

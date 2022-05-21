@@ -1,19 +1,25 @@
-# juego demo de apuestas con dados
-este es un demo para el juego de dados 
-> home -> localhost:3000/
 
-Routes
- 
-**crea el juego:**: <br> 
-en esta direccion es donde debemos empezar
-```create-game -> localhost:3000/createGame ```
+# Juego demo de apuestas con dados
+Este es un demo para el juego de dados <br>
+@author: Jose Felipe Escobar Ballesta - jfejose10@gmail.com
+El proyecto fue desarrollado con Visual Studio Code y mongodb compass
 
-**muestra el status del juego**<br>
-```game-status -> localhost:3000/game/:id ```<br>
+## Database
+    > the mongo database is running in localhost 27017
+    > the database name: 'games'
+## How to run the project
+    > npm run dev -> run dev mode
+    > npm run start -> run standard
 
-**comienza el juego con las apuestas de cada jugador**<br>
-en esta direccion se comienza el juego
-``` start-game -> localhost:3000/startGame  ```
+## Routes
+    > home -> localhost:8080/
 
-**muesta el ganador del juego**<br>
-``` game-winner -> localhost:3000/game/:id/winner  ``` 
+    "GET"
+    > create-game -> localhost:8080/createGame
+    > game-status -> localhost:8080/game/:id
+    > game-winner -> localhost:8080/game/:id/winner
+    > start-game -> localhost:8080/startGame
+
+    "POST"
+    > create-game -> localhost:8080/createGame
+    > start-game -> localhost:8080/startGame

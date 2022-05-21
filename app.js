@@ -5,17 +5,22 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose=require('mongoose');
 const cors=require('cors');
+const database=require('./connection/mongoConnect')
 
-// database connection
-const mongodb='mongodb://localhost/games';
-mongoose.connect(mongodb,{useNewUrlParser:true, useUnifiedTopology:true})
-    .then(()=>console.log("mongo db connected: base de datos games creada"))
-    .catch(()=>console.log(err));
 
-var app = express();
+const app = express();
 app.use(cors());
 
-// view engine setup
+/**
+ *  database connection
+ */
+
+database.mongoConnect();
+
+
+/** 
+ * view engine setup 
+ * */
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 

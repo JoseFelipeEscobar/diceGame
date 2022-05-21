@@ -5,7 +5,7 @@ block content
         h2 Juego de dados virtual
         img(src="https://cdn-icons-png.flaticon.com/512/2228/2228426.png")
 
-    form#createGame(class="form", action="", method="post")
+    form#createGame(class="form", autocomplete="off",action="", onsubmit="return validation()" method="post" )
       div.form-group  
         label(class="form-label", for='gamers') 
             input#player1.form-control(
@@ -34,5 +34,4 @@ block content
         button#submit(
             class="form-control btn-primary",
             type="submit", 
-            onsubmit="getData()") Enviar datos
-    
+            onsubmit="getData()") Crear Juego
