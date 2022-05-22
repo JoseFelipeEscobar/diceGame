@@ -12,9 +12,7 @@ El proyecto fue desarrollado con Visual Studio Code y mongodb compass
     > npm run start -> run standard
 
 ## Routes
-    > home -> localhost:8080/
-
-    "GET"
+      "GET"
     > create-game -> localhost:8080/createGame
     > game-status -> localhost:8080/game/:id
     > game-winner -> localhost:8080/game/:id/winner
